@@ -1,0 +1,243 @@
+@import "main.scss";
+
+.banner {
+  padding-left: 0;
+  padding-right: 0;
+
+  margin-top: 100px;
+}
+.portc {
+  margin-bottom: 150px;
+  text-align: center;
+  &  div{
+    text-align: left;
+  }
+  & > h1 {
+    display: inline-block;
+    margin-bottom: 70px;
+    font-size: 48px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $header-color;
+  }
+  & > .row{
+    margin:0;
+  }
+}
+
+.portrait{
+  z-index:2;
+  padding-left: 0;
+  padding-right: 0;
+  border: 0 solid $header-color;
+  //box-sizing: border-box;
+  @include transition($transition-set);
+
+  &:hover{
+    border: 3px solid $header-color;
+    @include transition($transition-set);
+  }
+
+  &:hover .popup {
+    opacity: 1;
+  }
+}
+
+.popup {
+  cursor: pointer;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0, 0.7);
+  @include transition($transition-set);
+}
+
+.popupCont{
+  width:220px;
+  h2 {
+    font-family: $header-font;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  h2:nth-child(3){
+    text-align: center;
+    text-transform:none;
+    color:white;
+    margin:20px;
+    font-size: 16px;
+    border: 2px solid rgba(255,255,255, 0.6);
+    padding-top:10px;
+    padding-bottom:10px;
+  }
+
+  h3 {
+    font-family: $text-font;
+    color: white;
+    font-size: 14px;
+
+    margin: 10px auto;
+    text-align: center;
+  }
+}
+
+.expanded-tiles {
+  display: none;
+  position: fixed;
+  z-index:101;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0, 0.7);
+}
+
+.expand {
+  display: none;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: black;
+}
+
+.expand-bg {
+  height: 100%;
+  width: auto;
+}
+
+.close-expand {
+  width: 30px;
+  position: absolute;
+  top: 15px;
+  right: 70px;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.expanded-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  padding-top: 10%;
+  overflow-y: auto;
+
+  h1 {
+    font-size: 42px;
+    margin: 0;
+  }
+
+  h2 {
+    margin: 0;
+    font-family: $text-font;
+    font-size: 22px;
+    color: white;
+  }
+
+  h3 {
+    font-family: $text-font;
+    font-size: 22px;
+    color: white;
+    font-weight: bold;
+    margin-top: 45px;
+  }
+
+  p, .portfolio-links {
+    width: 70%;
+  }
+
+  p a{
+    @include transition($transition-set);
+    &:hover{
+      color: $header-color;
+    }
+  }
+}
+
+.descript{
+  line-height: 2;
+}
+
+.portfolio-links {
+  margin: 25px 0;
+  & > div {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+@media (max-width: 992px) {
+  //Android overflow fix
+  html, body {
+  overflow-x: hidden;
+  }
+  body {
+    position: relative
+  }
+
+  //---------------------
+
+  .portrait{
+    &:hover{
+      border: none;
+    }
+
+    &:hover .popup {
+      opacity: 0;
+    }
+  }
+
+.popup{
+  opacity: 0;
+}
+  .expanded-tiles {
+    position: fixed;
+    padding-top: 0;
+    background-color: black;
+    overflow-x: hidden;
+    //overflow-y: auto;
+  }
+
+  .expand {
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .expand-bg {
+    width: 125%;
+    height: auto;
+  }
+
+  .expanded-info {
+    position: static;
+    width: 100%;
+    background-color: black;
+    padding-top: 40px;
+    overflow-y: visible;
+
+    h1 {
+      font-size: 36px;
+    }
+    h2, h3 {
+      font-size: 18px;
+    }
+
+    p, .portfolio-links {
+      width: 100%;
+    }
+  }
+
+  .close-expand {
+    top: 30px;
+    right: 30px;
+  }
+}
